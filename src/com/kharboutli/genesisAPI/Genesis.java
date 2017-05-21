@@ -13,8 +13,13 @@ public class Genesis {
 	/*
 	 * Placeholder Default constructor
 	 */
-	public Genesis()
+	public Genesis(String email, String password)
 	{
 		
 	}
+	
+	
+	//Getters for Student name, grade, basic info
+	//
+	//public Gradebook[] generateGradebook();
 }
