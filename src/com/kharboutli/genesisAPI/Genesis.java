@@ -1,4 +1,5 @@
 package com.kharboutli.genesisAPI;
+import java.net.URL;
 
 /*
  * Class to represent a full "Genesis object". This class will contain
