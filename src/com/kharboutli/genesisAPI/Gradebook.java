@@ -45,10 +45,47 @@ public class Gradebook {
 		}
 	}
 	
-	private Course[] courses = new Course[9];
+	private Course[] myCourses = new Course[0];
 	
 	public Gradebook() 
 	{
 		//TODO
 	}
+	
+	public Course[] getCourses()
+	{
+		return myCourses;
+	}
+	
+	public int getAverage100Grade()
+	{
+		double sum = 0;
+		for(int c = 0; c < myCourses.length; c++)
+		{
+			sum += myCourses[c].getGrade();
+		}
+		return (int) Math.round(sum / myCourses.length);
+	}
+	
+	public double getAverage4Grade()
+	{
+		
+	}
+	
+	public Course getCourse()
+	{
+		
+	}
+	
+	public String toString()
+	{
+		String result = "";
+		for(int c = 0; c < myCourses.length; c++)
+		{
+			result += myCourses[c].toString();
+		}
+		return result;
+	}
+	
+	
 }
