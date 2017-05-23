@@ -74,13 +74,13 @@ public class Gradebook {
 		{
 			double grade = myCourses[c].getGrade();
 			if(grade >= 90) sum += 4.0;
-			else if(grade >= 86) sum += 3.5;
+			else if(grade >= 85.5) sum += 3.5;
 			else if(grade >= 80) sum += 3;
-			else if(grade >= 76) sum += 2.5;
+			else if(grade >= 75.5) sum += 2.5;
 			else if(grade >= 70) sum += 2;
-			else if(grade >= 65) sum += 1.5;
+			else if(grade >= 65.5) sum += 1.5;
 			else if(grade >= 60) sum += 1;
-			else if(grade >= 56) sum += .5;
+			else if(grade >= 55.5) sum += .5;
 			else sum += 0;
 			
 		}
@@ -108,6 +108,4 @@ public class Gradebook {
 		}
 		return result;
 	}
-	
-	
 }
