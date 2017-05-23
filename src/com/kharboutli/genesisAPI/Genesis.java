@@ -19,5 +19,4 @@ public class Genesis {
 	
 	//Getters for Student name, grade, basic info
 	//public Gradebook generateGradebook();
-	//
 }
