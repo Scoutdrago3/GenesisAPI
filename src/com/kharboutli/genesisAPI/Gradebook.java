@@ -1,55 +1,19 @@
 package com.kharboutli.genesisAPI;
 
+import java.util.ArrayList;
+
 /*
  * A class used to contain any grade book information. It is composed
  * of an array and various methods get and set various pieces of grade 
- * information. It is also composed of a nested private class that
- * represents a single course in the grade book.
+ * information.
  */
-
 public class Gradebook {
-	/*
-	 * A course object which contains information and methods to
-	 * pertaining to the information of a single course in the
-	 * grade book.
-	 */
-	private class Course
-	{
-		private String courseName;
-		private String teacherLastName;
-		private double grade;
-		
-		public Course()
-		{
-			//TODO
-		}
-		
-		public String getCourseName()
-		{
-			return courseName;
-		}
-		
-		public String getTeacher()
-		{
-			return teacherLastName;
-		}
-		
-		public double getGrade()
-		{
-			return grade;
-		}
-		
-		public String toString()
-		{
-			return "Name: " + courseName + ", Taught By: " + teacherLastName + ", Current Course Grade: " + grade;
-		}
-	}
 	
 	private Course[] myCourses = new Course[0];
 	
-	public Gradebook() 
+	public Gradebook(ArrayList<Course> courses) 
 	{
-		//TODO
+		//TODO: put elements from the array list into the array
 	}
 	
 	public Course[] getCourses()
@@ -95,6 +59,15 @@ public class Gradebook {
 			{
 				if(myCourses[c].getCourseName().substring(d, d + key.length()).equals(key)) return myCourses[c];
 			}
+		}
+		return null;
+	}
+	
+	public Course getCourse(int period)
+	{
+		for(int c = 0; c < myCourses.length; c++)
+		{
+			if(myCourses[c].getPeriod() == period) return myCourses[c]; // needs work: what if you have more than one class that period!
 		}
 		return null;
 	}
