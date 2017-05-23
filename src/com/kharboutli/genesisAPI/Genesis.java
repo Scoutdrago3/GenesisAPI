@@ -10,9 +10,7 @@ package com.kharboutli.genesisAPI;
 
 public class Genesis {
 	
-	/*
-	 * Placeholder Default constructor
-	 */
+
 	public Genesis(String email, String password)
 	{
 		
@@ -20,6 +18,6 @@ public class Genesis {
 	
 	
 	//Getters for Student name, grade, basic info
-	//
 	//public Gradebook generateGradebook();
+	//
 }
