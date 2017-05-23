@@ -1,5 +1,7 @@
 package com.kharboutli.genesisAPI;
 import java.net.URL;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 /*
  * Class to represent a full "Genesis object". This class will contain
@@ -11,13 +13,37 @@ import java.net.URL;
 
 public class Genesis {
 	
-
+	private String mainPage;
+	private String gradebookPage;
+	
 	public Genesis(String email, String password)
 	{
-		
+		//TODO: authenticate, get HTML for the two important pages
 	}
 	
-	
-	//Getters for Student name, grade, basic info
-	//public Gradebook generateGradebook();
+	//TODO: parsing...
+//	public String findName()
+//	{
+//		
+//	}
+//	
+//	public int findGrade()
+//	{
+//		
+//	}
+//	
+//	public String findStudentID()
+//	{
+//		
+//	}
+//	
+//	public String findSchedule()
+//	{
+//		
+//	}
+//	
+//	public ArrayList<Course> generateCourses()
+//	{
+//		
+//	}
 }
