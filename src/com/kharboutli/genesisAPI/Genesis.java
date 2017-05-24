@@ -1,7 +1,18 @@
 package com.kharboutli.genesisAPI;
+
 import java.net.URL;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlEmailInput;
+import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
+import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
+import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 /*
  * Class to represent a full "Genesis object". This class will contain
@@ -10,15 +21,31 @@ import java.util.ArrayList;
  * the constructor will make calls to authenticate the user. This class
  * will only have getters to return the data.
  */
-
 public class Genesis {
 	
-	private String mainPage;
-	private String gradebookPage;
+	private HtmlPage homePage;
+	private HtmlPage gradebookPage;
 	
-	public Genesis(String email, String password)
+	public Genesis(String email, String password) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
-		//TODO: authenticate, get HTML for the two important pages
+		WebClient webCli = new WebClient();
+
+		HtmlPage authPage = webCli.getPage("http://parents.westfieldnjk12.org/genesis/parents?gohome=true");
+		HtmlForm logonForm = authPage.getFormByName("logon");
+
+		HtmlEmailInput emailInput = logonForm.getInputByName("j_username");
+		HtmlPasswordInput passwordInput = logonForm.getInputByName("j_password");
+		HtmlSubmitInput submitButton = logonForm.getInputByValue("Login");
+
+		emailInput.setText(email);
+		passwordInput.setText(password);
+		homePage = submitButton.click();
+
+		// very likely that this doesn't work:
+		// needs to retain auth token, who knows if this does
+		String gradebookURL = homePage.getUrl().toString().replace("tab2=studentsummary",
+				"tab2=gradebook&tab3=weeklysummary");
+		gradebookPage = webCli.getPage(gradebookURL);
 	}
 	
 	//TODO: parsing...
