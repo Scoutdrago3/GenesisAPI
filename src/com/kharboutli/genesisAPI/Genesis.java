@@ -44,32 +44,35 @@ public class Genesis {
 		String gradebookURL = homePage.getUrl().toString().replace("tab2=studentsummary",
 				"tab2=gradebook&tab3=weeklysummary");
 		gradebookPage = webCli.getPage(gradebookURL);
+		
 		webCli.close();
 	}
 	
 	//TODO: parsing...
 	public String findName()
 	{
+		String homepPageContent = homePage.getWebResponse().getContentAsString();
 		
+		return null;
 	}
-//	
-//	public int findGrade()
-//	{
-//		
-//	}
-//	
-//	public String findStudentID()
-//	{
-//		
-//	}
-//	
-//	public String findSchedule()
-//	{
-//		
-//	}
-//	
-//	public ArrayList<Course> generateCourses()
-//	{
-//		
-//	}
+	
+	public int findGrade()
+	{
+		return -1;
+	}
+	
+	public String findStudentID()
+	{
+		return null;
+	}
+	
+	public String findSchedule()
+	{
+		return null;
+	}
+	
+	public ArrayList<Course> generateCourses()
+	{
+		return null;
+	}
 }
