@@ -1,6 +1,5 @@
 package com.kharboutli.genesisAPI;
 
-import java.net.URL;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPasswordInput;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 
 /*
  * Class to represent a full "Genesis object". This class will contain
@@ -46,13 +44,14 @@ public class Genesis {
 		String gradebookURL = homePage.getUrl().toString().replace("tab2=studentsummary",
 				"tab2=gradebook&tab3=weeklysummary");
 		gradebookPage = webCli.getPage(gradebookURL);
+		webCli.close();
 	}
 	
 	//TODO: parsing...
-//	public String findName()
-//	{
-//		
-//	}
+	public String findName()
+	{
+		
+	}
 //	
 //	public int findGrade()
 //	{
