@@ -1,5 +1,10 @@
 package com.kharboutli.genesisAPI;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+
 public class Student {
 	
 	private Gradebook myGradebook;
@@ -7,7 +12,7 @@ public class Student {
 	private String myLastName;
 	private int myGrade;
 	
-	public Student(String email, String password)
+	public Student(String email, String password) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
 		Genesis gen = new Genesis(email, password);
 		myGradebook = new Gradebook(gen.generateCourses());
