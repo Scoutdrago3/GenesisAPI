@@ -27,6 +27,9 @@ public class Genesis {
 	public Genesis(String email, String password) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
 		WebClient webCli = new WebClient();
+		webCli.getOptions().setCssEnabled(false);
+		webCli.getOptions().setAppletEnabled(false);
+		webCli.getOptions().setJavaScriptEnabled(false);
 
 		HtmlPage authPage = webCli.getPage("http://parents.westfieldnjk12.org/genesis/parents?gohome=true");
 		HtmlForm logonForm = authPage.getFormByName("logon");
