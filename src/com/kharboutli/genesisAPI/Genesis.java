@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlEmailInput;
@@ -23,6 +26,8 @@ public class Genesis {
 	
 	private HtmlPage homePage;
 	private HtmlPage gradebookPage;
+	private String homePageContent;
+	private String gradebookPageContent;
 	
 	public Genesis(String email, String password) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
@@ -42,11 +47,12 @@ public class Genesis {
 		passwordInput.setText(password);
 		homePage = submitButton.click();
 
-		// very likely that this doesn't work:
-		// needs to retain auth token, who knows if this does
 		String gradebookURL = homePage.getUrl().toString().replace("tab2=studentsummary",
 				"tab2=gradebook&tab3=weeklysummary");
 		gradebookPage = webCli.getPage(gradebookURL);
+		
+		homePageContent = homePage.getWebResponse().getContentAsString();
+		gradebookPageContent = gradebookPage.getWebResponse().getContentAsString();
 		
 		webCli.close();
 	}
@@ -54,7 +60,10 @@ public class Genesis {
 	//TODO: parsing...
 	public String findName()
 	{
-		String homepPageContent = homePage.getWebResponse().getContentAsString();
+		String name[] = new String[2];
+		Document htmlPageDoc = Jsoup.parse(homePageContent);
+		
+		htmlPageDoc.body().getElementsByAttributeValue("name", "frmHome");
 		
 		return null;
 	}
