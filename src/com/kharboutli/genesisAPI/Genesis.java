@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -60,12 +61,12 @@ public class Genesis {
 	//TODO: parsing...
 	public String findName()
 	{
-		String name[] = new String[2];
+		String name;
 		Document htmlPageDoc = Jsoup.parse(homePageContent);
+		Element els = htmlPageDoc.body();
+		name = els.select("span[style*=font-weight]").select("span[style*=color]").first().text();
 		
-		htmlPageDoc.body().getElementsByAttributeValue("name", "frmHome");
-		
-		return null;
+		return name;
 	}
 	
 	public int findGrade()
@@ -74,11 +75,6 @@ public class Genesis {
 	}
 	
 	public String findStudentID()
-	{
-		return null;
-	}
-	
-	public String findSchedule()
 	{
 		return null;
 	}
