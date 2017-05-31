@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -61,26 +62,33 @@ public class Genesis {
 	//TODO: parsing...
 	public String findName()
 	{
-		String name;
-		Document htmlPageDoc = Jsoup.parse(homePageContent);
-		Element els = htmlPageDoc.body();
-		name = els.select("span[style*=font-weight]").select("span[style*=color]").first().text();
-		
-		return name;
+		Element body = Jsoup.parse(homePageContent).body();
+		return body.select("span[style*=font-weight]").select("span[style*=color]").first().text();
 	}
 	
 	public int findGrade()
 	{
-		return -1;
+		Element body = Jsoup.parse(homePageContent).body();
+		String strGrade = body.select("td[style*=font-size]").select("td[rowspan]").last().text();
+		return Integer.parseInt(strGrade.replace(" ", ""));
 	}
 	
 	public String findStudentID()
 	{
-		return null;
+		Element body = Jsoup.parse(homePageContent).body();
+		return body.select("td[style*=font-size]").select("td[style*=white-space]").select("td[text-transform]").first().text();
 	}
 	
-	public ArrayList<Course> generateCourses()
+	public Course[] generateCourses()
 	{
-		return null;
+		ArrayList arr = new ArrayList<Course>();
+		Element body = Jsoup.parse(gradebookPageContent).body();
+		Elements els = body.select("table[class=list]").select("table[border*=0]").first().getElementsByTag("tr");
+		for(int c = 0; c <= els.indexOf(els.last()); c++)
+		{
+			//TODO: loop through each, create course object for each tr
+			
+		}
+		return (Course[]) arr.toArray();
 	}
 }
