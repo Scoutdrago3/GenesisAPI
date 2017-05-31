@@ -17,7 +17,10 @@ public class Student {
 		Genesis gen = new Genesis(email, password);
 //		myGradebook = new Gradebook(gen.generateCourses());
 		myFirstName = gen.findName();
+		gen.findGrade();		//test
+		gen.findStudentID();	//test
 //		myGrade = gen.findGrade();
+//		myStudentID = gen.findStudentID();
 	}
 	
 	public Gradebook getGradebook()
