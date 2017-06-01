@@ -12,12 +12,12 @@ public class Course
 	private double myGrade;
 	private int myPeriod;
 	
-	public Course(String courseName, String teacherLastName, double grade, int period)
+	public Course(String info[])
 	{
-		myCourseName = courseName;
-		myTeacherLastName = teacherLastName;
-		myGrade = grade;
-		myPeriod = period;
+//		myCourseName = courseName;
+//		myTeacherLastName = teacherLastName;
+//		myGrade = grade;
+//		myPeriod = period;
 	}
 	
 	public String getCourseName()
