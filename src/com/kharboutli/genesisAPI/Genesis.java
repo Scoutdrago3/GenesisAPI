@@ -81,13 +81,31 @@ public class Genesis {
 	
 	public Course[] generateCourses()
 	{
-		ArrayList arr = new ArrayList<Course>();
+		ArrayList<Course> arr = new ArrayList<Course>();
 		Element body = Jsoup.parse(gradebookPageContent).body();
 		Elements els = body.select("table[class=list]").select("table[border*=0]").first().getElementsByTag("tr");
-		for(int c = 0; c <= els.indexOf(els.last()); c++)
+		for(int c = 1; c <= els.indexOf(els.last()); c++)
 		{
-			//TODO: loop through each, create course object for each tr
-			
+			String info[] = new String[3];
+			Elements el = els.get(c).getElementsByTag("td"); //get all "td"s
+			for(int d = 0; d <= el.indexOf(el.last()); d++) // go through all the 
+			{	
+				if(d == 0)
+				{
+					Element td = el.get(0);
+					info[0] = td.select("span[class*=categorytab]").select("title").first().getElementsByTag("font").first().getElementsByTag("u").first().text();
+				} else if(d == 1)
+				{
+					info[1] = el.get(1).text();
+					
+				} else if(d == 2)
+				{
+					String grade = el.get(2).select("span[style*=font-style]").first().text();
+					if(grade.contains("No")) info[2] = "-1.0";
+					else info[2] = grade;
+				}
+			}
+			arr.add(new Course(info));
 		}
 		return (Course[]) arr.toArray();
 	}
