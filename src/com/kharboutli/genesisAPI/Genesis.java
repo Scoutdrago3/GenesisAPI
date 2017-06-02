@@ -31,6 +31,13 @@ public class Genesis {
 	private String homePageContent;
 	private String gradebookPageContent;
 	
+	/*
+	 * The constructor for the Genesis class will create a HTMLUnit WebClient
+	 * and connect to parents.westfieldnjk12.org. It will authenticate the user
+	 * and then scrape the home and gradebook pages' HTML.
+	 * @param {string} email - the email address to authenticate the user
+	 * @param {string} password - the password to authenticate the user
+	 */
 	public Genesis(String email, String password) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
 		WebClient webCli = new WebClient();
@@ -59,7 +66,10 @@ public class Genesis {
 		webCli.close();
 	}
 	
-	//TODO: parsing...
+	/*
+	 * The method will search the HTML for the first name of the
+	 * student. There are no implemented methods as of right now for the 
+	 */
 	public String findName()
 	{
 		Element body = Jsoup.parse(homePageContent).body();
@@ -89,7 +99,7 @@ public class Genesis {
 			String info[] = new String[3];
 			Elements el = els.get(c).getElementsByTag("td"); //get all "td"s
 			for(int d = 0; d <= el.indexOf(el.last()); d++) // go through all the 
-			{	
+			{
 				if(d == 0)
 				{
 					Element td = el.get(0);
@@ -97,7 +107,6 @@ public class Genesis {
 				} else if(d == 1)
 				{
 					info[1] = el.get(1).text();
-					
 				} else if(d == 2)
 				{
 					String grade = el.get(2).select("span[style*=font-style]").first().text();

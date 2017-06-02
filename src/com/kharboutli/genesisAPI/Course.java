@@ -10,7 +10,7 @@ public class Course
 	private String myCourseName;
 	private String myTeacherLastName;
 	private double myGrade;
-	private int myPeriod;
+	//private int myPeriod;
 	
 	public Course(String info[])
 	{
