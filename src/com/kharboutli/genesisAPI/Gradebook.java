@@ -63,14 +63,14 @@ public class Gradebook {
 		return null;
 	}
 	
-	public Course getCourse(int period)
-	{
-		for(int c = 0; c < myCourses.length; c++)
-		{
-			if(myCourses[c].getPeriod() == period) return myCourses[c]; // needs work: what if you have more than one class that period!
-		}
-		return null;
-	}
+//	public Course getCourse(int period)
+//	{
+//		for(int c = 0; c < myCourses.length; c++)
+//		{
+//			if(myCourses[c].getPeriod() == period) return myCourses[c]; // needs work: what if you have more than one class that period!
+//		}
+//		return null;
+//	}
 	
 	public String toString()
 	{

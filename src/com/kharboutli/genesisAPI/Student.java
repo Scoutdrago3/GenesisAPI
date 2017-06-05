@@ -16,9 +16,13 @@ public class Student {
 	{
 		Genesis gen = new Genesis(email, password);
 //		myGradebook = new Gradebook(gen.generateCourses());
-		myFirstName = gen.findName();
-		gen.findGrade();		//test
-		gen.findStudentID();	//test
+		//myFirstName = gen.findName();
+		//gen.findGrade();		//test
+		//gen.findStudentID();	//test
+		System.out.println(gen.findName());
+		System.out.println(gen.findStudentID());
+		System.out.println(gen.findGrade());
+		System.out.println(gen.generateCourses());
 //		myGrade = gen.findGrade();
 //		myStudentID = gen.findStudentID();
 	}

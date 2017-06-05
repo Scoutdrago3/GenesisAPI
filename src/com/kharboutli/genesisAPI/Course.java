@@ -35,10 +35,10 @@ public class Course
 		return myGrade;
 	}
 	
-	public int getPeriod()
-	{
-		return myPeriod;
-	}
+//	public int getPeriod()
+//	{
+//		return myPeriod;
+//	}
 	
 	public String toString()
 	{
