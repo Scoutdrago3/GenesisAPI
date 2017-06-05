@@ -10,14 +10,14 @@ public class Course
 	private String myCourseName;
 	private String myTeacherLastName;
 	private double myGrade;
-	//private int myPeriod;
+	private int myPeriod;
 	
 	public Course(String info[])
 	{
-//		myCourseName = courseName;
-//		myTeacherLastName = teacherLastName;
-//		myGrade = grade;
-//		myPeriod = period;
+		myCourseName = info[0];
+		myTeacherLastName = info[1];
+		myGrade = Double.parseDouble(info[2].replace(" ", ""));
+		myPeriod = -1;
 	}
 	
 	public String getCourseName()
@@ -35,10 +35,10 @@ public class Course
 		return myGrade;
 	}
 	
-//	public int getPeriod()
-//	{
-//		return myPeriod;
-//	}
+	public int getPeriod()
+	{
+		return myPeriod;
+	}
 	
 	public String toString()
 	{
