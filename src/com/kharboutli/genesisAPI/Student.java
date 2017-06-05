@@ -41,4 +41,9 @@ public class Student {
 	{
 		return myGrade;
 	}
+	
+	public String getStudentID()
+	{
+		return myStudentID;
+	}
 }
