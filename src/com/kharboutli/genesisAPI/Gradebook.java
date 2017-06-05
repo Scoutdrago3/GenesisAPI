@@ -1,7 +1,5 @@
 package com.kharboutli.genesisAPI;
 
-import java.util.ArrayList;
-
 /*
  * A class used to contain any grade book information. It is composed
  * of an array and various methods get and set various pieces of grade 
@@ -11,9 +9,9 @@ public class Gradebook {
 	
 	private Course[] myCourses = new Course[0];
 	
-	public Gradebook(ArrayList<Course> courses) 
+	public Gradebook(Course[] courses) 
 	{
-		//TODO: put elements from the array list into the array
+		myCourses = courses;
 	}
 	
 	public Course[] getCourses()
@@ -63,6 +61,7 @@ public class Gradebook {
 		return null;
 	}
 	
+//TODO: find period and ship it with array
 //	public Course getCourse(int period)
 //	{
 //		for(int c = 0; c < myCourses.length; c++)
