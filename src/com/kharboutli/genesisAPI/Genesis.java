@@ -34,6 +34,7 @@ public class Genesis {
 	 * The constructor for the Genesis class will create a HTMLUnit WebClient
 	 * and connect to parents.westfieldnjk12.org. It will authenticate the user
 	 * and then scrape the home and gradebook pages' HTML.
+	 * 
 	 * @param {string} email - the email address to authenticate the user
 	 * @param {string} password - the password to authenticate the user
 	 */
@@ -75,17 +76,16 @@ public class Genesis {
 		return body.select("span[style*=font-weight]").select("span[style*=color]").first().text();
 	}
 	
-	public int findGrade()
+	public String findGrade()
 	{
 		Element body = Jsoup.parse(homePageContent).body();
-		String strGrade = body.select("td[style*=font-size]").select("td[rowspan]").last().text();
-		return Integer.parseInt(strGrade.replace(" ", ""));
+		return body.select("td[style*=text-align: center]").text().split(" ")[1].replace(" ", "");
 	}
 	
 	public String findStudentID()
 	{
 		Element body = Jsoup.parse(homePageContent).body();
-		return body.select("td[style*=font-size]").select("td[style*=white-space]").select("td[text-transform]").first().text();
+		return body.select("td[style*=font-size]").select("span[style*=font-weight: bold]").text().split(" ")[0];
 	}
 	
 	public Course[] generateCourses()
@@ -93,24 +93,29 @@ public class Genesis {
 		ArrayList<Course> arr = new ArrayList<Course>();
 		Element body = Jsoup.parse(gradebookPageContent).body();
 		Elements els = body.select("table[class=list]").select("table[border*=0]").first().getElementsByTag("tr");
+		//System.out.println(els.html());
 		for(int c = 1; c <= els.indexOf(els.last()); c++)
 		{
 			String info[] = new String[3];
 			Elements el = els.get(c).getElementsByTag("td"); //get all "td"s
+			System.out.println(els);
 			for(int d = 0; d <= el.indexOf(el.last()); d++) // go through all the 
 			{
 				if(d == 0)
 				{
 					Element td = el.get(0);
-					info[0] = td.select("span[class*=categorytab]").select("title").first().getElementsByTag("font").first().getElementsByTag("u").first().text();
+					info[0] = td.select("span[class*=categorytab]").text();
+					System.out.println("[" + d + "]:" + info[0]); 
 				} else if(d == 1)
 				{
 					info[1] = el.get(1).text();
+					System.out.println("[" + d + "]:" + info[1]);
 				} else if(d == 2)
 				{
 					String grade = el.get(2).select("span[style*=font-style]").first().text();
 					if(grade.contains("No")) info[2] = "-1.0";
 					else info[2] = grade;
+					System.out.println("[" + d + "]:" + info[2]);
 				}
 			}
 			arr.add(new Course(info));
