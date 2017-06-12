@@ -93,33 +93,28 @@ public class Genesis {
 		ArrayList<Course> arr = new ArrayList<Course>();
 		Element body = Jsoup.parse(gradebookPageContent).body();
 		Elements els = body.select("table[class=list]").select("table[border*=0]").first().getElementsByTag("tr");
-		//System.out.println(els.html());
-		for(int c = 1; c <= els.indexOf(els.last()); c++)
+		for(int c = 1; c <= els.indexOf(els.last()); c+=2)
 		{
 			String info[] = new String[3];
 			Elements el = els.get(c).getElementsByTag("td"); //get all "td"s
-			System.out.println(els);
 			for(int d = 0; d <= el.indexOf(el.last()); d++) // go through all the 
 			{
 				if(d == 0)
 				{
 					Element td = el.get(0);
-					info[0] = td.select("span[class*=categorytab]").text();
-					System.out.println("[" + d + "]:" + info[0]); 
+					info[0] = td.select("span[class*=categorytab]").text(); 
 				} else if(d == 1)
 				{
 					info[1] = el.get(1).text();
-					System.out.println("[" + d + "]:" + info[1]);
 				} else if(d == 2)
 				{
-					String grade = el.get(2).select("span[style*=font-style]").first().text();
-					if(grade.contains("No")) info[2] = "-1.0";
-					else info[2] = grade;
-					System.out.println("[" + d + "]:" + info[2]);
+					String grade = el.get(2).select("td[style*=border:0;color:#0066CC;]").text(); //"span[style*=font-style]").first().text();
+					if(grade.length() < 1) info[2] = "-1.0";
+					else info[2] = grade.replace("%", "");
 				}
 			}
 			arr.add(new Course(info));
 		}
-		return (Course[]) arr.toArray();
+		return (Course[]) arr.toArray(new Course[0]);
 	}
 }
