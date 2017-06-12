@@ -10,5 +10,9 @@ public class Driver {
 	public static void main(String args[]) throws FailingHttpStatusCodeException, MalformedURLException, IOException
 	{
 		Student stud = new Student("jooleen14@yahoo.com", "Marwan#3");
+		System.out.println(stud.getFirstName());
+		System.out.println(stud.getGrade());
+		System.out.println(stud.getStudentID());
+		System.out.println(stud.getGradebook());
 	}
 }
