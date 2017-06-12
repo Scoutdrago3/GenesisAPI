@@ -9,7 +9,7 @@ public class Gradebook {
 	
 	private Course[] myCourses = new Course[0];
 	
-	public Gradebook(Course[] courses) 
+	public Gradebook(Course[] courses)
 	{
 		myCourses = courses;
 	}
@@ -76,7 +76,7 @@ public class Gradebook {
 		String result = "";
 		for(int c = 0; c < myCourses.length; c++)
 		{
-			result += myCourses[c].toString();
+			result += myCourses[c].toString() + "\n";
 		}
 		return result;
 	}
