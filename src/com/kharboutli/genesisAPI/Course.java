@@ -15,7 +15,7 @@ public class Course
 	public Course(String info[])
 	{
 		myCourseName = info[0];
-		myTeacherLastName = info[1];
+		myTeacherLastName = info[1].replace(" Email:", "").split(",")[0];
 		myGrade = Double.parseDouble(info[2].replace(" ", ""));
 		myPeriod = -1;
 	}
