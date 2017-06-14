@@ -1,11 +1,12 @@
 package com.kharboutli.genesisAPI;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 
-public class Student {
+public class Student implements Serializable {
 	
 	private Gradebook myGradebook;
 	private String myFirstName;
