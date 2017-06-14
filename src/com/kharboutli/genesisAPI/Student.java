@@ -8,6 +8,7 @@ import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 
 public class Student implements Serializable {
 	
+	private static final long serialVersionUID = 123L;
 	private Gradebook myGradebook;
 	private String myFirstName;
 	private int myGrade;
